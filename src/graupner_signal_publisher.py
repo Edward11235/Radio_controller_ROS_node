@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 
 import rospy
-from graupner_signal_publisher.msg import GraupnerSignal
+from std_msgs.msg import UInt32MultiArray
 import serial
 
 def talker():
-    pub = rospy.Publisher('graupner_signal', GraupnerSignal, queue_size=10)
+    pub = rospy.Publisher('graupner_signal', UInt32MultiArray, queue_size=10)
     rospy.init_node('graupner_signal_publisher', anonymous=True)
     rate = rospy.Rate(20)  # 20 Hz
 
     # Initialize serial port
-    ser = serial.Serial('/dev/arduino', 9600, timeout=1)
+    ser = serial.Serial('/dev/arduino_nano', 9600, timeout=1)
 
     while not rospy.is_shutdown():
         if ser.in_waiting > 0:
@@ -18,11 +18,8 @@ def talker():
             values = line.split(',')
             if len(values) == 4:
                 try:
-                    msg = GraupnerSignal()
-                    msg.throttle = int(values[0])
-                    msg.steering = int(values[1])
-                    msg.switch_3 = int(values[2])
-                    msg.switch_8 = int(values[3])
+                    msg = UInt32MultiArray()
+                    msg.data = [int(values[0]), int(values[1]), int(values[2]), int(values[3])]
                     rospy.loginfo(msg)
                     pub.publish(msg)
                 except ValueError:
