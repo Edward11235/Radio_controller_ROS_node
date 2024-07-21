@@ -10,7 +10,7 @@ def talker():
     rate = rospy.Rate(20)  # 20 Hz
 
     # Initialize serial port
-    ser = serial.Serial('/dev/arduino', 9600, timeout=1)
+    ser = serial.Serial('/dev/arduino', 38400, timeout=1)
 
     while not rospy.is_shutdown():
         if ser.in_waiting > 0:
