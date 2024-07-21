@@ -1,20 +1,15 @@
-// 1 on receiver is throttle
-// 2 on receiver is steering
-// 5 on receiver is switch 6
-// 6 on receiver is switch 8
-
-const int receiverPins[4] = {5, 6, 7, 8};  // Pins connected to the receiver channels
-unsigned long durations[4];
+const int receiverPins[5] = {5, 6, 7, 8, 9};  // Pins connected to the receiver channels including the joystick
+unsigned long durations[5];  // Increased the size to accommodate the joystick
 
 void setup() {
   Serial.begin(38400);
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 5; i++) {
     pinMode(receiverPins[i], INPUT);
   }
 }
 
 void loop() {
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 5; i++) {
     durations[i] = pulseIn(receiverPins[i], HIGH);
   }
 
@@ -26,5 +21,8 @@ void loop() {
   Serial.print(" | Switch 6: ");
   Serial.print(durations[2]);
   Serial.print(" | Switch 8: ");
-  Serial.println(durations[3]);
+  Serial.print(durations[3]);
+  Serial.print(" | Lateral: ");
+  Serial.println(durations[4]);
 }
+
