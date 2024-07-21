@@ -19,12 +19,12 @@ void loop() {
   }
 
   // Print the values for debugging
-//  Serial.print("Throttle: ");
-//  Serial.print(durations[0]);
-//  Serial.print(" | Steering: ");
-//  Serial.print(durations[1]);
-//  Serial.print(" | Switch 6: ");
-//  Serial.print(durations[2]);
-//  Serial.print(" | Switch 8: ");
-//  Serial.println(durations[3]);
+  Serial.print("Throttle: ");
+  Serial.print(durations[0]);
+  Serial.print(" | Steering: ");
+  Serial.print(durations[1]);
+  Serial.print(" | Switch 6: ");
+  Serial.print(durations[2]);
+  Serial.print(" | Switch 8: ");
+  Serial.println(durations[3]);
 }
