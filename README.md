@@ -28,6 +28,8 @@ To ensure consistent naming of your Arduino Nano device, you can create a udev r
     SUBSYSTEM=="tty", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0042", SYMLINK+="arduino"
     # or
     SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="arduino"
+    # or (orignal arduino uno)
+    SUBSYSTEM=="tty", ATTRS{idVendor}=="2a03", ATTRS{idProduct}=="0043", SYMLINK+="arduino"
     ```
 
 4. **Reload the Udev Rules**
