@@ -38,4 +38,7 @@ To ensure consistent naming of your Arduino Nano device, you can create a udev r
     sudo udevadm control --reload-rules
     sudo udevadm trigger
     ```
-# Radio_controller_ROS_node
+5. **TO run it**
+    ```
+    rosrun graupner_signal_publisher graupner_signal_publisher.py
+    ```
