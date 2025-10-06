@@ -10,7 +10,7 @@ def talker():
     rate = rospy.Rate(20)  # 20 Hz
 
     # Initialize serial port
-    ser = serial.Serial('/dev/arduino', 38400, timeout=1)
+    ser = serial.Serial('/dev/arduino_radio', 38400, timeout=1)
 
     while not rospy.is_shutdown():
         if ser.in_waiting > 0:
@@ -25,8 +25,9 @@ def talker():
                         switch_6 = int(values[2].split(':')[1].strip())  # Updated to switch 6
                         switch_8 = int(values[3].split(':')[1].strip())
                         lateral = int(values[4].split(':')[1].strip())  # Added lateral
-                        
+                       
                         msg = UInt32MultiArray()
+                        print([throttle, steering, switch_6, switch_8, lateral])
                         msg.data = [throttle, steering, switch_6, switch_8, lateral]  # Updated to include lateral
                         pub.publish(msg)
                     except ValueError:
