@@ -1,4 +1,4 @@
-const int receiverPins[5] = {5, 7, 9, 10, 1};  // Pins connected to the receiver channels including the joystick
+const int receiverPins[5] = {5, 7, 9, 10, 4};  // Pins connected to the receiver channels including the joystick
 unsigned long durations[5];  // Increased the size to accommodate the joystick
 
 void setup() {
@@ -25,4 +25,3 @@ void loop() {
   Serial.print(" | Lateral: ");
   Serial.println(durations[4]);
 }
-
