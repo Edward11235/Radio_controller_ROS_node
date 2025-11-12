@@ -4,6 +4,8 @@ import rospy
 from std_msgs.msg import UInt32MultiArray
 import serial
 
+print_value = False
+
 def talker():
     pub = rospy.Publisher('graupner_signal', UInt32MultiArray, queue_size=10)
     rospy.init_node('graupner_signal_publisher', anonymous=True, log_level=rospy.ERROR)  # Set log level to ERROR to reduce logging
@@ -27,7 +29,8 @@ def talker():
                         lateral = int(values[4].split(':')[1].strip())  # Added lateral
                        
                         msg = UInt32MultiArray()
-                        print([throttle, steering, switch_6, switch_8, lateral])
+                        if print_value:
+                            print([throttle, steering, switch_6, switch_8, lateral])
                         msg.data = [throttle, steering, switch_6, switch_8, lateral]  # Updated to include lateral
                         pub.publish(msg)
                     except ValueError:
